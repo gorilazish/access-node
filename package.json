@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel / -s -D -d dist --presets es2015,stage-0",
-    "start": "node dist",
-    "prestart": "npm run -s build"
+    "build": "babel ./src -s -D -d dist --presets es2015,stage-0",
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.2",

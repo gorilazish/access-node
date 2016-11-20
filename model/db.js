@@ -1,3 +1,3 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/access-node/');
+mongoose.connect('localhost:27017/access');

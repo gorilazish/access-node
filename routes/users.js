@@ -1,7 +1,6 @@
 var express = require('express');
-var router = require('Router');
-var mongoose = require('mongoose');
-var controller = require('./usersController');
+var router = express.Router();
+var controller = require('../model/usersController');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -15,8 +14,8 @@ router.use(methodOverride(function (req, res) {
 }));
 
 /* GET users listing. */
-router.get('/', controller.get);
-router.post('/', controller.post);
-
+router.route('/')
+    .get(controller.get)
+    .post(controller.post);
 
 module.exports = router;
