@@ -15,7 +15,6 @@ exports.get = function (req, res, next) {
 exports.post = function (req, res, next) {
     var newUser = new User(req.body);
     console.log(req.body);
-    //res.json('success');
 
     newUser.save(function (err, user) {
         if (err) {
@@ -40,10 +39,3 @@ exports.verify = function (req, res, next) {
 exports.addCard = function (req, res, next) {
 
 };
-
-// res.json(users.map(function (user) {
-//     const userCards = user.cards;
-//     return userCards.map(function (card) {
-//         return card;
-//     })
-// }))
