@@ -16,6 +16,7 @@ router.use(methodOverride(function (req, res) {
 router.route('/')
     .post(controller.post);
 
+/** Verify that user is in the company and send out card_id */
 router.route('/verify')
     .post(controller.verify);
 

@@ -12,7 +12,6 @@ router.use(methodOverride(function (req, res) {
     }
 }));
 
-/** GET users listing, POST create new user */
 router.route('/')
     .get(controller.get)
     .post(controller.post);

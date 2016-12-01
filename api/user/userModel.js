@@ -10,11 +10,13 @@ var userSchema = new mongoose.Schema({
         }]
     });
 
+/** Create unique ID */
 userSchema.pre('save', function (next) {
     this.user_id = "U" + Date.now();
     next();
 });
 
+/** Add card to the user */
 userSchema.static('addCard', function (_id, company, card_id, err) {
     console.log('addCard ', _id, 'card_id ', card_id);
     return this.findByIdAndUpdate(

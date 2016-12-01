@@ -4,6 +4,7 @@ var User = require('./userModel');
 var config = require('./../config');
 var signToken = require('../../auth/auth').signToken;
 
+/** Get all users */
 exports.get = function (req, res, next) {
     User.find({})
         .exec()
@@ -16,6 +17,7 @@ exports.get = function (req, res, next) {
         });
 };
 
+/** Create new user */
 exports.post = function (req, res, next) {
     var newUser = new User(req.body);
 
