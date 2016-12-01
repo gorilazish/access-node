@@ -24,7 +24,6 @@ exports.post = function (req, res, next) {
             return res.json(err);
         }
         var token = signToken(user._id);
-        console.log(user._id);
         res.json({ token: token });
     })
 };
