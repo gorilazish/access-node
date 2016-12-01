@@ -1,4 +1,4 @@
-var User = require('../model/usersModel');
+var User = require('./usersModel');
 var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;

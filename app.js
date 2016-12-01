@@ -4,13 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var db = require('./model/db');
-var User = require('./model/usersModel');
-var mongoose = require('mongoose');
-var index = require('./routes/index');
-var users = require('./routes/usersRoutes');
-
 var app = express();
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
+
+var config = require('./api/config');
+var User = require('./api/user/userModel');
+var index = require('./routes/index');
+var users = require('./api/user/userRoutes');
+
+/** Connect to database and secret variable */
+mongoose.connect(config.database);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

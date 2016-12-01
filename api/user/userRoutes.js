@@ -1,6 +1,5 @@
-var express = require('express');
-var router = express.Router();
-var controller = require('../model/usersController');
+var router = require('express').Router();
+var controller = require('./userController');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -17,6 +16,9 @@ router.use(methodOverride(function (req, res) {
 router.route('/')
     .get(controller.get)
     .post(controller.post);
+
+router.route('/authenticate')
+    .post(controller.auth);
 
 router.route('/:id')
     .get(controller.verify);
