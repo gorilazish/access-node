@@ -58,7 +58,7 @@ exports.auth = function (req, res, next) {
 };
 
 exports.verify = function (req, res, next) {
-    const name = req.params.id;
+    var name = req.params.id;
     console.log(name);
 
     User.find({ name: name})

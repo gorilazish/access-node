@@ -13,7 +13,10 @@ router.use(methodOverride(function (req, res) {
 }));
 
 /** POST create new card. */
-// router.route('/')
-//     .post(controller.post);
+router.route('/')
+    .post(controller.post);
+
+router.route('/verify')
+    .get(controller.get);
 
 module.exports = router;

@@ -23,5 +23,4 @@ router.route('/authenticate')
 router.route('/:id')
     .get(controller.verify);
 
-
 module.exports = router;
