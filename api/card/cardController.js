@@ -4,10 +4,10 @@ var Card = require('./cardModel');
 var config = require('./../config');
 var signToken = require('../../auth/auth').signToken;
 
-exports.get = function (req, res, next) {
-    var company = req.params.institution;
-    var email = req.params.email;
-    var pin = req.params.pin;
+exports.verify = function (req, res, next) {
+    var company = req.body.institution;
+    var email = req.body.email;
+    var pin = req.body.pin;
 
     res.json(company + ' ' + email + ' ' + pin)
 };

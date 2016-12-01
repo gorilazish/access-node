@@ -17,6 +17,6 @@ router.route('/')
     .post(controller.post);
 
 router.route('/verify')
-    .get(controller.get);
+    .post(controller.verify);
 
 module.exports = router;
