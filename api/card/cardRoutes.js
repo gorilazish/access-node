@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var controller = require('./userController');
+var controller = require('./cardController');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
@@ -12,16 +12,8 @@ router.use(methodOverride(function (req, res) {
     }
 }));
 
-/** GET users listing, POST create new user */
-router.route('/')
-    .get(controller.get)
-    .post(controller.post);
-
-router.route('/authenticate')
-    .post(controller.auth);
-
-router.route('/:id')
-    .get(controller.verify);
-
+/** POST create new card. */
+// router.route('/')
+//     .post(controller.post);
 
 module.exports = router;

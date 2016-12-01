@@ -24,7 +24,7 @@ exports.post = function (req, res, next) {
             return res.json(err);
         }
         var token = signToken(user._id);
-        res.json({ token: token });
+        res.json({ token: token, user_id: user.user_id });
     })
 };
 
@@ -44,7 +44,7 @@ exports.auth = function (req, res, next) {
             if(user.password !== req.body.password) {
                 res.json({ success: false, message: 'Authentication failed. Wrong password.'})
             } else {
-                var token = signToken(user);
+                var token = signToken(user._id);
 
                 res.json({
                     success: true,
