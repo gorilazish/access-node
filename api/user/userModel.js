@@ -22,7 +22,8 @@ userSchema.static('addCard', function (user_id, institution, card_id, access_lvl
     console.log('addCard ', user_id, 'card_id ', card_id);
     return this.findByIdAndUpdate(
         {user_id: user_id},
-        {$push: {cards: {institution: institution, card_id: card_id, access_lvl: access_lvl}}},
+        // {$push: {cards: {institution: institution, card_id: card_id, access_lvl: access_lvl}}},
+        {$push: {stuff: 'new'}},
         function (err, model) {
             console.log(err);
         }

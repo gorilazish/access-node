@@ -11,7 +11,7 @@ exports.verify = function (req, res, next) {
     var institution = req.body.institution;
     var email = req.body.email;
     var pin = req.body.pin;
-
+    console.log(req.user);
     Card.findOne({
         email: email,
         pin: pin
