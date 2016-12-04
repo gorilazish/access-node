@@ -25,7 +25,7 @@ exports.post = function (req, res, next) {
         if (err) {
             return res.json(err);
         }
-        var token = signToken(user.user_id);
+        var token = signToken(user._id);
         res.json({ token: token, user_id: user.user_id });
     })
 };
@@ -46,7 +46,7 @@ exports.auth = function (req, res, next) {
             if(user.password !== req.body.password) {
                 res.json({ success: false, message: 'Authentication failed. Wrong password.'})
             } else {
-                var token = signToken(user.user_id);
+                var token = signToken(user._id);
 
                 res.json({
                     success: true,
@@ -61,7 +61,6 @@ exports.auth = function (req, res, next) {
 
 exports.verify = function (req, res, next) {
     var name = req.params.id;
-    console.log(name);
 
     User.find({ name: name})
         .then(function (user) {

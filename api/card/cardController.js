@@ -11,7 +11,8 @@ exports.verify = function (req, res, next) {
     var institution = req.body.institution;
     var email = req.body.email;
     var pin = req.body.pin;
-    console.log(req.user);
+    var _id = req.user._id;
+
     Card.findOne({
         email: email,
         pin: pin
@@ -21,8 +22,10 @@ exports.verify = function (req, res, next) {
             if(!card) {
                 res.json('no cards found')
             }
-            User.addCard(req.user.user_id, institution, card.card_id, card.access_lvl);
+            User.addCard(_id, institution, card.card_id, card.access_lvl);
             res.json({
+                success: true,
+                message: 'Card added to the user',
                 card_id: card.card_id
             })
         });
