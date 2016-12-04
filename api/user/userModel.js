@@ -5,8 +5,9 @@ var userSchema = new mongoose.Schema({
         email: {type: String, unique: true},
         password: {type: String, required: true},
         cards: [{
-            company: String,
-            card_id: String
+            institution: String,
+            card_id: String,
+            access_lvl: Number
         }]
     });
 
@@ -17,11 +18,11 @@ userSchema.pre('save', function (next) {
 });
 
 /** Add card to the user */
-userSchema.static('addCard', function (_id, company, card_id, err) {
-    console.log('addCard ', _id, 'card_id ', card_id);
+userSchema.static('addCard', function (user_id, institution, card_id, access_lvl, err) {
+    console.log('addCard ', user_id, 'card_id ', card_id);
     return this.findByIdAndUpdate(
-        {_id: _id},
-        {$push: {cards: {company: company, card_id: card_id}}},
+        {user_id: user_id},
+        {$push: {cards: {institution: institution, card_id: card_id, access_lvl: access_lvl}}},
         function (err, model) {
             console.log(err);
         }

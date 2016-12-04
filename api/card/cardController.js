@@ -1,6 +1,7 @@
 var app = require('express')();
 var jwt = require('jsonwebtoken');
 var Card = require('./cardModel');
+var User = require('../user/userModel');
 var config = require('./../config');
 var signToken = require('../../auth/auth').signToken;
 
@@ -11,7 +12,20 @@ exports.verify = function (req, res, next) {
     var email = req.body.email;
     var pin = req.body.pin;
 
-    res.json(institution + ' ' + email + ' ' + pin)
+    Card.findOne({
+        email: email,
+        pin: pin
+    })
+        .exec()
+        .then(function(card) {
+            if(!card) {
+                res.json('no cards found')
+            }
+            User.addCard(req.user.user_id, institution, card.card_id, card.access_lvl);
+            res.json({
+                card_id: card.card_id
+            })
+        });
 };
 
 

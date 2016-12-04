@@ -2,6 +2,8 @@ var router = require('express').Router();
 var controller = require('./cardController');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var auth = require('../../auth/auth');
+var checkUser = auth.validateToken();
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function (req, res) {
@@ -18,6 +20,6 @@ router.route('/')
 
 /** Verify that user is in the company and send out card_id */
 router.route('/verify')
-    .post(controller.verify);
+    .post(checkUser, controller.verify);
 
 module.exports = router;
