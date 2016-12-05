@@ -9,10 +9,10 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
 var config = require('./api/config');
-var User = require('./api/user/userModel');
-var index = require('./routes/index');
+var index = require('./api/indexRoutes');
 var users = require('./api/user/userRoutes');
 var cards = require('./api/card/cardRoutes');
+var access = require('./api/access/accessRoutes');
 
 /** Connect to database and secret variable */
 mongoose.connect(config.database);
@@ -32,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/cards', cards);
+app.use('/access', access);
 
 
 // catch 404 and forward to error handler

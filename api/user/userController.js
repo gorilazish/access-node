@@ -70,7 +70,3 @@ exports.verify = function (req, res, next) {
             res.json('verified ' + user[0].name + ' with card id ' + cardId)
         });
 };
-
-exports.addCard = function (req, res, next) {
-
-};

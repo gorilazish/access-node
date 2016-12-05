@@ -12,4 +12,18 @@ cardSchema.pre('save', function(next) {
     next();
 });
 
+/** Remove pin after activation */
+cardSchema.static('deactivatePin', function (_id, err) {
+    return this.findByIdAndUpdate(
+        {_id: _id},
+        {$set: {pin: 1111}},
+        function (err, model) {
+            if (err) {
+                console.error(err);
+            }
+            console.log('pin deactivated');
+        }
+    );
+});
+
 module.exports = mongoose.model('aau', cardSchema);

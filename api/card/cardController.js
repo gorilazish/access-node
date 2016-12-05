@@ -8,7 +8,7 @@ var signToken = require('../../auth/auth').signToken;
 
 /** Verify that user is in the company and send out card_id */
 exports.verify = function (req, res, next) {
-    var institution = req.body.institution;
+    var institution = req.params.institution;
     var email = req.body.email;
     var pin = req.body.pin;
     var _id = req.user._id;
@@ -18,11 +18,12 @@ exports.verify = function (req, res, next) {
         pin: pin
     })
         .exec()
-        .then(function(card) {
-            if(!card) {
+        .then(function (card) {
+            if (!card) {
                 res.json('no cards found')
             }
             User.addCard(_id, institution, card.card_id, card.access_lvl);
+            Card.deactivatePin(card._id);
             res.json({
                 success: true,
                 message: 'Card added to the user',
@@ -30,7 +31,6 @@ exports.verify = function (req, res, next) {
             })
         });
 };
-
 
 /** Create new card */
 exports.post = function (req, res, next) {
