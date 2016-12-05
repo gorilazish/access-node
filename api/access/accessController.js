@@ -43,12 +43,12 @@ exports.post = function (req, res, next) {
             }
             return user.cards.map(function (card) {
                     if (card.access_lvl !== lock_access_lvl) {
-                        return res.json({
+                         res.json({
                             success: false,
                             message: 'Invalid access level.'
                         })
                     } else if (card.access_lvl == lock_access_lvl) {
-                        return res.json({
+                         res.json({
                             success: true,
                             message: 'Access granted for the phone.'
                         })
