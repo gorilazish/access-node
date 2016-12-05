@@ -5,6 +5,8 @@ exports.post = function (req, res, next) {
     var UID = req.body.user_id;
     var lock_access_lvl = parseInt(req.body.access_lvl);
     var institution = req.params.institution;
+    console.log('user id is: ' + UID);
+    console.log('lock access lvl: ' + lock_access_lvl);
 
     User.findOne({ user_id: UID }, function (err, user) {
         if(err) {
