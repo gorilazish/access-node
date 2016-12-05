@@ -1,9 +1,6 @@
-var app = require('express')();
-var jwt = require('jsonwebtoken');
 var Card = require('./cardModel');
 var User = require('../user/userModel');
 var config = require('./../config');
-var signToken = require('../../auth/auth').signToken;
 
 
 /** Verify that user is in the company and send out card_id */
