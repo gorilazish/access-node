@@ -4,8 +4,6 @@ var Card = require('./../card/cardModel');
 exports.post = function (req, res, next) {
     var institution = req.params.institution;
     var lock_access_lvl = parseInt(req.body.access_lvl);
-    console.log(lock_access_lvl);
-    console.log(req.body);
 
     /** If card_id is sent in the body it means user is using physical card */
     if (req.body.card_id !== undefined) {
