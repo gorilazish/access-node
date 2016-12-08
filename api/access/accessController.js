@@ -12,6 +12,7 @@ exports.post = function (req, res, next) {
 
         Card.findOne({card_id: card_id, access_lvl: lock_access_lvl})
             .then(function (card) {
+                console.log('physical card access level ' + card.access_lvl);
                 if (!card) {
                     res.json({
                         success: false,
