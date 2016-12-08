@@ -4,6 +4,7 @@ var Card = require('./../card/cardModel');
 exports.post = function (req, res, next) {
     var institution = req.params.institution;
     var lock_access_lvl = parseInt(req.body.access_lvl);
+    console.log('lock access level ' + lock_access_lvl);
 
     /** If card_id is sent in the body it means user is using physical card */
     if (req.body.card_id !== undefined) {
@@ -41,12 +42,14 @@ exports.post = function (req, res, next) {
             }
             return user.cards.map(function (card) {
                     if (card.access_lvl !== lock_access_lvl) {
-                         res.json({
+                        console.log('phone access level ' + card.access_lvl);
+                        res.json({
                             success: false,
                             message: 'Invalid access level.'
                         })
                     } else if (card.access_lvl == lock_access_lvl) {
-                         res.json({
+                        console.log('phone access level ' + card.access_lvl);
+                        res.json({
                             success: true,
                             message: 'Access granted for the phone.'
                         })
