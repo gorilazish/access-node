@@ -14,6 +14,7 @@ exports.post = function (req, res, next) {
             .then(function (card) {
                 console.log('physical card access level ' + card.access_lvl);
                 if (!card) {
+                    console.log('no card');
                     res.json({
                         success: false,
                         message: 'No card found.'
